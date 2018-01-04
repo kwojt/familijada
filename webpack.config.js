@@ -43,20 +43,24 @@ module.exports = {
                                 })
                         },
                         {
-                                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                                test: /\.(eot|ttf|woff|woff2)$/,
                                 loader: 'file-loader',
                                 options: {
-                                        name: '[path][name].[ext]',
-                                        outputPath: 'img/',
+                                        name: '[name].[ext]',
+                                        outputPath: '/fonts/',
                                         emitFile: true,
                                 }
                         },
                         {
-                                test: /\.(png|gif|jpg|jpeg)$/,
+                                test: /\.(png|gif|jpg|jpeg|svg)$/,
                                 use: {
                                         loader: 'url-loader',
                                         options: {
-                                                limit: 8192
+                                                limit: 8192,
+												// TODO To be passed to file-loader???
+												name: '[name].[ext]',
+												outputPath: '/img/',
+												emitFile: true,
                                         }
                                 }
                         }
